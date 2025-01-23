@@ -17,7 +17,7 @@ Note: The Maven repository address needs to be configured in both 'buildscript' 
 
 (2) If you are using Gradle for integration, add the following code to your project's build.gradle:
 ```kotlin
-implementation 'dev.deeplink:analytics:1.2.0'
+implementation 'dev.deeplink:analytics:1.3.0'
 ```
 
 (3) Please add the following configuration in gradle.properties
