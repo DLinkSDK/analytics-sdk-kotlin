@@ -42,11 +42,18 @@ class TestApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        val config = AnalyticsConfig.Builder().setAccountId("YOUR_ACCOUNT_ID")
+        val config = AnalyticsConfig.Builder()
+            .setAccountId("YOUR_ACCOUNT_ID")
             .setDevToken("YOUR_DEV_TOKEN")
-            .setMinReportInterval(10) //The minimum interval for reporting event data, in seconds
-            .setMaxReportNumEachTime(50) //The maximum number of event data reported each time
+            //[require] Developers need to pass in the key for tracking data.
+            //It is strongly recommended that you set different keys for different users.
+            .setCryptKey("DYNAMIC_CRYPT_KEY")
+            //[optional] The minimum interval for reporting event data, in seconds.Default 10 seconds.
+            .setMinReportInterval(10)
+            //[optional] The maximum number of event data reported each time.Default 50.
+            .setMaxReportNumEachTime(50)
             .build()
+        //[require] Call this method to initialize the SDK
         Analytics.setup(this, config)
     }
 }
