@@ -11,7 +11,7 @@
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:background="@android:color/holo_red_dark"
-        android:text="Generate Normal Events" />
+        android:text="Generate Normal Event" />
 
     <Button
         android:id="@+id/button2"
