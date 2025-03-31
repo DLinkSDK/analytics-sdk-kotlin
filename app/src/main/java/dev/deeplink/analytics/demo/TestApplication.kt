@@ -18,7 +18,7 @@ class TestApplication : Application() {
         val config = AnalyticsConfig.Builder()
             .setAccountId("YOUR_ACCOUNT_ID")
             .setDevToken("YOUR_DEV_TOKEN")
-            //[require] Developers need to pass in the key for tracking data.
+            //[require] Developers need to pass in the key for event data.
             //It is strongly recommended that you set different keys for different users.
             .setCryptKey("DYNAMIC_CRYPT_KEY")
             //[optional] The minimum interval for reporting event data, in seconds.Default 10 seconds.
@@ -38,7 +38,7 @@ class TestApplication : Application() {
         Analytics.register(DefaultDataService(sender = object : IDataSender {
 
             override fun send(dataPackage: DataPackage, finished: (Boolean) -> Unit) {
-                // Send event data to your business server
+                // Send DataPackage to your business server
                 // val result = api.sendToYourServer(dataPackage)
                 val result = Random.nextBoolean()
 
