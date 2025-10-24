@@ -12,19 +12,17 @@ class TestActivity : Activity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_test)
         findViewById<Button>(R.id.button1)?.setOnClickListener {
-            Analytics.log(
-                "button_click_1",
-                hashMapOf<String, Any>().apply {
-                    this["button_id"] = "button1"
-                }
-            )
+            Analytics.log("pay_fail", hashMapOf<String, Any>().apply {
+                this.put("order_id", "ORDER_ID")
+                this.put("product_id", "PRODUCT_ID")
+            })
         }
         findViewById<Button>(R.id.button2)?.setOnClickListener {
             //[Optional] Set the event priority to Event.PRIORITY_HIGH, and the event will be reported immediately.
             Analytics.log(
-                eventName = "button_click_2",
+                eventName = "button_click",
                 eventParams = hashMapOf<String, Any>().apply {
-                    this["button_id"] = "button2"
+                    this["button_id"] = "BUTTON_ID"
                 }, priority = Event.PRIORITY_HIGH
             )
         }
@@ -32,6 +30,14 @@ class TestActivity : Activity() {
             //[Optional] Developers can call this method to report tracking data when the page is destroyed or at other times.
             // By default, the SDK will try to report events when the application returns to the foreground or background.
             Analytics.flush()
+        }
+        var uid = 0
+        Analytics.addCustomParams(hashMapOf<String, Any>().apply {
+            this["userid"] = uid
+        })
+        findViewById<Button>(R.id.button4)?.setOnClickListener {
+            uid++
+            Analytics.updateCustomParam("userid", uid)
         }
     }
 }

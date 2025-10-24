@@ -29,11 +29,6 @@ class TestApplication : Application() {
         //[require] Call this method to initialize the SDK
         Analytics.setup(this, config)
 
-        //[optional] Developers can add custom parameters globally
-        Analytics.addCustomParams(hashMapOf<String, Any>().apply {
-            this["userid"] = "UID"
-        })
-
         //[require] Developers customize IDataSender to report event data to the business server
         Analytics.register(DefaultDataService(sender = object : IDataSender {
 
@@ -46,7 +41,6 @@ class TestApplication : Application() {
                 finished.invoke(result)
             }
         }))
-
         Analytics.register(FirebaseDataService())
     }
 
@@ -54,6 +48,10 @@ class TestApplication : Application() {
 
         override fun handle(event: Event) {
             //Please call the Firebase api to log events here
+        }
+
+        override fun release() {
+
         }
 
         override fun flush(force: Boolean) {

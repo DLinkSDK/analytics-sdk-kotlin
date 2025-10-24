@@ -29,4 +29,12 @@
         android:background="@android:color/holo_blue_dark"
         android:text="Manual Flush" />
 
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@android:color/holo_blue_dark"
+        android:text="Update Custom Param" />
+
 </LinearLayout>
